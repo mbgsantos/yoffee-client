@@ -1,0 +1,32 @@
+.App {
+  text-align: center;
+  min-height: 100vh;
+  max-height: 100%;
+  background: #F4EEE1;
+  color: #444139;
+}
+
+body {
+  margin: 0;
+}
+
+.Navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  background: #E7E3DD;
+  color: #444139;
+  padding: 0px 20px;
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 5px;
+}
+
+.Navbar a {
+  list-style: none;
+  text-decoration: none;
+  display: inline-block;
+  margin: 0px 20px;
+  font-size: 1rem;
+  color: #444139;
+}
