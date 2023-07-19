@@ -37,10 +37,10 @@ const PetDetails = () => {
                     <h5>Breed: {pet.breed}</h5>
                     <h5>Age: {pet.age}</h5>
                     <h5>Microchip: {pet.microchip}</h5>
-                    {/* <h5>Veterinary: {pet.veterinary.name}</h5>
+                    <h5>Veterinary: {pet.veterinary.name}</h5>
                     <h6>Street: {pet.veterinary.address.street}</h6>
                     <h6>City: {pet.veterinary.address.city}</h6>
-                    <h6>Country: {pet.veterinary.address.country}</h6> */}
+                    <h6>Country: {pet.veterinary.address.country}</h6>
                     <h5>Insurance Name: {pet.insurance_name}</h5>
                     <h5>Diet: {pet.diet}</h5>
 

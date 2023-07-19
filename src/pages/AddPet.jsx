@@ -9,6 +9,7 @@ const AddPet = () => {
     const [microchip, setMicrochip] = useState('');
     const [insurance_name, setInsuranceName] = useState('');
     const [diet, setDiet] = useState('');
+    const [veterinary_name, setVeterinaryName] = useState('')
     const navigate = useNavigate();
 
     const handleName = e => {
@@ -35,11 +36,20 @@ const AddPet = () => {
         setDiet(e.target.value);
     };
 
+    const handleVeterinaryName = e => {
+        setVeterinaryName(e.target.value)
+    }
+
     const handleSubmit = async (event) => {
         event.preventDefault();
 
         try {
-            const newPet = {name, breed, age, microchip, insurance_name, diet}
+            const newPet = {name, breed, age, microchip, insurance_name, diet, veterenary: {
+                name: veterinary_name,
+                address: {
+                    street: ""
+                }
+            }}
             await addPet(newPet);
             navigate('/pets');
         } catch (error) {
