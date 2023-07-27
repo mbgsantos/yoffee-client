@@ -9,7 +9,10 @@ const AddPet = () => {
     const [microchip, setMicrochip] = useState('');
     const [insurance_name, setInsuranceName] = useState('');
     const [diet, setDiet] = useState('');
-    const [veterinary_name, setVeterinaryName] = useState('')
+    const [veterinary_name, setVeterinaryName] = useState('');
+    const [veterinary_street, setVeterinaryStreet] = useState('');
+    const [veterinary_city, setVeterinaryCity] = useState('');
+    const [veterinary_country, setVeterinaryCountry] = useState('');
     const navigate = useNavigate();
 
     const handleName = e => {
@@ -37,18 +40,32 @@ const AddPet = () => {
     };
 
     const handleVeterinaryName = e => {
-        setVeterinaryName(e.target.value)
-    }
+        setVeterinaryName(e.target.value);
+    };
+
+    const handleVeterinaryStreet = e => {
+        setVeterinaryStreet(e.target.value);
+    };
+
+    const handleVeterinaryCity = e => {
+        setVeterinaryCity(e.target.value);
+    };
+
+    const handleVeterinaryCountry = e => {
+        setVeterinaryCountry(e.target.value);
+    };
 
     const handleSubmit = async (event) => {
         event.preventDefault();
 
         try {
-            const newPet = {name, breed, age, microchip, insurance_name, diet, veterenary: {
+            const newPet = {name, breed, age, microchip, insurance_name, diet, veterinary: {
                 name: veterinary_name,
                 address: {
-                    street: ""
-                }
+                    street: veterinary_street,
+                    city: veterinary_city,
+                    country: veterinary_country,
+                },
             }}
             await addPet(newPet);
             navigate('/pets');
@@ -60,6 +77,10 @@ const AddPet = () => {
         setBreed('');
         setAge(0);
         setMicrochip('');
+        setVeterinaryName('');
+        setVeterinaryStreet('');
+        setVeterinaryCity('');
+        setVeterinaryCountry('');
         setInsuranceName('');
         setDiet('');
     };
@@ -80,6 +101,18 @@ const AddPet = () => {
 
                     <label>Microchip:</label>
                     <input type="text" name="microchip" value={microchip} onChange={handleMicrochip} />
+
+                    <label>Veterinary Name:</label>
+                    <input type="text" name="vetName" value={veterinary_name} onChange={handleVeterinaryName} />
+
+                    <label>Veterinary Street:</label>
+                    <input type="text" name="vetStreet" value={veterinary_street} onChange={handleVeterinaryStreet} />
+
+                    <label>Veterinary City:</label>
+                    <input type="text" name="vetCity" value={veterinary_city} onChange={handleVeterinaryCity} />
+
+                    <label>Veterinary Country:</label>
+                    <input type="text" name="vetCountry" value={veterinary_country} onChange={handleVeterinaryCountry} />
 
                     <label>Insurance Name:</label>
                     <input type="text" name="insuranceName" value={insurance_name} onChange={handleInsuranceName} />

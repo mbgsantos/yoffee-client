@@ -39,41 +39,46 @@ const Signup = () => {
     };
 
     return (
-        <div>
-            <h1>Sign Up</h1>
+        <div className={'card text-center Credentials'} style={{height: '20rem', backgroundColor: '#E7E3DD'}}>
+            <div className={'card-body Crdtls'}>
+                <form onSubmit={handleSubmit}>
+                    <input 
+                        placeholder="Name"
+                        type="text" 
+                        name="name" 
+                        value={name} 
+                        onChange={handleName}
+                    />
+                    <br />
 
-            <form onSubmit={handleSubmit}>
-                <label>Name:</label>
-                <input 
-                    type="text" 
-                    name="name" 
-                    value={name} 
-                    onChange={handleName}
-                />
+                    <input 
+                        style={{marginTop: '1rem'}}
+                        placeholder="Email"
+                        type="email" 
+                        name="email" 
+                        value={email} 
+                        onChange={handleEmail}
+                    />
+                    <br />
 
-                <label>Email:</label>
-                <input 
-                    type="email" 
-                    name="email" 
-                    value={email} 
-                    onChange={handleEmail}
-                />
+                    <input 
+                        style={{marginTop: '1rem'}}
+                        placeholder="Password"
+                        type="password" 
+                        name="password" 
+                        value={password} 
+                        onChange={handlePassword} 
+                    />
+                    <br />
 
-                <label>Password</label>
-                <input 
-                    type="password" 
-                    name="password" 
-                    value={password} 
-                    onChange={handlePassword} 
-                />
+                    <button type='submit' className={'btn btn-warning'}>Sign Up</button>
+                </form>
 
-                <button type='submit'>Sign Up</button>
-            </form>
+                {errorMessage && <p>{errorMessage}</p>}
 
-            {errorMessage && <p>{errorMessage}</p>}
-
-            <p>Already have an account?</p>
-            <Link to={'/login'} >Login</Link>
+                <p>Already have an account?</p>
+                <Link to={'/login'} >Login</Link>
+            </div>
         </div>
     );
 }

@@ -9,6 +9,10 @@ const EditPet = () => {
     const [microchip, setMicrochip] = useState('');
     const [insurance_name, setInsuranceName] = useState('');
     const [diet, setDiet] = useState('');
+    const [veterinary_name, setVeterinaryName] = useState('');
+    const [veterinary_street, setVeterinaryStreet] = useState('');
+    const [veterinary_city, setVeterinaryCity] = useState('');
+    const [veterinary_country, setVeterinaryCountry] = useState('');
     const {id} = useParams();
     const navigate = useNavigate();
 
@@ -22,6 +26,10 @@ const EditPet = () => {
                 setMicrochip(response.data.microchip);
                 setInsuranceName(response.data.insurance_name);
                 setDiet(response.data.diet);
+                setVeterinaryName(response.data.veterinary_name);
+                setVeterinaryStreet(response.data.veterinary_street);
+                setVeterinaryCity(response.data.veterinary_city);
+                setVeterinaryCountry(response.data.veterinary_country);
             } catch (error) {
                 console.log('Error fetching pet', error);
             }
@@ -54,11 +62,34 @@ const EditPet = () => {
         setDiet(e.target.value);
     };
 
+    const handleVeterinaryName = e => {
+        setVeterinaryName(e.target.value);
+    };
+
+    const handleVeterinaryStreet = e => {
+        setVeterinaryStreet(e.target.value);
+    };
+
+    const handleVeterinaryCity = e => {
+        setVeterinaryCity(e.target.value);
+    };
+
+    const handleVeterinaryCountry = e => {
+        setVeterinaryCountry(e.target.value);
+    };
+
     const handleSubmit = async event => {
         event.preventDefault();
 
         try {
-            const updatedPet = {name, breed, age, microchip, insurance_name, diet, _id: id};
+            const updatedPet = {name, breed, age, microchip, insurance_name, diet, _id: id, veterinary: {
+                name: veterinary_name,
+                address: {
+                    street: veterinary_street,
+                    city: veterinary_city,
+                    country: veterinary_country,
+                },
+            }};
             await updatePet(updatedPet);
             navigate('/pets');
         } catch (error) {
@@ -69,6 +100,11 @@ const EditPet = () => {
         setBreed('');
         setAge(0);
         setMicrochip('');
+        setInsuranceName('');
+        setVeterinaryName('');
+        setVeterinaryStreet('');
+        setVeterinaryCity('');
+        setVeterinaryCountry('');
         setInsuranceName('');
         setDiet('');
     };
@@ -89,6 +125,18 @@ const EditPet = () => {
 
                 <label>Microchip:</label>
                 <input type="text" name="microchip" value={microchip} onChange={handleMicrochip} />
+
+                <label>Veterinary Name:</label>
+                <input type="text" name="vetName" value={veterinary_name} onChange={handleVeterinaryName} />
+
+                <label>Veterinary Street:</label>
+                <input type="text" name="vetStreet" value={veterinary_street} onChange={handleVeterinaryStreet} />
+
+                <label>Veterinary City:</label>
+                <input type="text" name="vetCity" value={veterinary_city} onChange={handleVeterinaryCity} />
+
+                <label>Veterinary Country:</label>
+                <input type="text" name="vetCountry" value={veterinary_country} onChange={handleVeterinaryCountry} />
 
                 <label>Insurance Name:</label>
                 <input type="text" name="insuranceName" value={insurance_name} onChange={handleInsuranceName} />

@@ -12,6 +12,14 @@ import EditPet from './pages/EditPet'
 import AddPet from './pages/AddPet'
 import About from './pages/About'
 import Advantages from './pages/Advantages'
+import Activities from './pages/Activities'
+import AddActivity from './pages/AddActivity'
+import ActivityDetails from './pages/ActivityDetails'
+import EditActivity from './pages/EditActivity'
+import Services from './pages/Services'
+import AddService from './pages/AddService'
+import ServiceDetails from './pages/ServiceDetails'
+import EditService from './pages/EditService'
 
 function App() {
   return (
@@ -26,6 +34,14 @@ function App() {
         <Route path='/pets/:id' element={ <IsPrivate> <PetDetails /> </IsPrivate> } />
         <Route path='/pets/create' element={ <IsPrivate> <AddPet /> </IsPrivate> } />
         <Route path='/pets/edit/:id' element={ <IsPrivate> <EditPet /> </IsPrivate> } />
+        <Route path='/activities' element={ <IsPrivate> <Activities /> </IsPrivate> } />
+        <Route path='/activities/create' element={ <IsPrivate> <AddActivity /> </IsPrivate> } />
+        <Route path='/activities/:id' element={ <IsPrivate> <ActivityDetails /> </IsPrivate> } />
+        <Route path='/activities/edit/:id' element={ <IsPrivate> <EditActivity /> </IsPrivate> } />
+        <Route path='/services' element={ <IsPrivate> <Services /> </IsPrivate> } />
+        <Route path='/services/create' element={ <IsPrivate> <AddService /> </IsPrivate> } />
+        <Route path='/services/:id' element={ <IsPrivate> <ServiceDetails /> </IsPrivate> } />
+        <Route path='/services/edit/:id' element={ <IsPrivate> <EditService /> </IsPrivate> } />
         <Route path='/signup' element={ <IsAnon> <Signup /> </IsAnon> } />
         <Route path='/login' element={ <IsAnon> <Login /> </IsAnon> } />
       </Routes>
